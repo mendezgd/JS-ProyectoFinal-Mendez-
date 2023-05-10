@@ -89,6 +89,7 @@ eventoBoton = function (e) {
         color: '#14AE30',
         imageUrl:"/media/mono2.gif",
         imageAlt: 'mono con un arma',
+        background: '#FCFDAF',
         
     })
 };

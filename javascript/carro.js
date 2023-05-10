@@ -37,9 +37,10 @@ eventoBoton = function (e) {
     let carrito = { items: arrCarrito };
     localStorage.setItem("carrito", JSON.stringify(carrito));
     Swal.fire({
-        titleText: 'item eliminado!',
+        text: 'item eliminado!',
         icon: 'error',
-        background: '#F1F5F2',
+        width: 350,
+        background: '#FCFDAF',
     })
     refrescarItems();
 };
