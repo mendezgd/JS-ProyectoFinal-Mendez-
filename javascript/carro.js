@@ -1,4 +1,4 @@
-// declaraciones //
+// declaraciones //A
 let local = localStorage.getItem("carrito");
 let carrito = JSON.parse(local);
 let arrCarrito = [];
@@ -13,7 +13,7 @@ function itemHtml(el) {
             <div class="card m-1">
                 <div class="row g-0">
                     <div class="col-md-1">
-                        <img src="../media/${el.img}" class="img-fluid rounded-start" alt="...">
+                        <img src="../media/${el.img}" class="img-fluid rounded-start" alt="${el.nombre}" >
                     </div>
                     <div class="col-md-10">
                         <div class="card-body">
@@ -24,7 +24,7 @@ function itemHtml(el) {
                     </div>
                     <div class="col-md-1">
                         <p class="card-text text-center pt-4">$${el.precio}</p>
-                        <button value="${el.id}" class="btn btn-danger borrar">Borrar</button>
+                        <button value="${el.id}" class="btn btn-danger btn-sm borrar">Borrar</button>
                     </div>
                 </div>
             </div>`;

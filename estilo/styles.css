@@ -48,3 +48,7 @@ footer {
 .col-md-10 {
     background-color: #fac85b;
 }
+
+.col-md-1 img{
+    width: 100%;
+}

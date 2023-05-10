@@ -46,7 +46,7 @@ function crearCard(el) {
                     <div class="card-body">
                         <h5 class="card-title">${el.nombre}</h5>
                         <p class="card-text">${el.descripcion}</p>
-                        <button value="${el.id}" class="btn btn-primary agregar" data-bs-toggle="button">Agregar al carro</button>
+                        <button value="${el.id}" class="btn btn-primary btn-sm agregar" data-bs-toggle="button">Agregar al carro</button>
                         <p>Precio: $${el.precio}</p>
                     </div>
                 </div>
@@ -83,9 +83,13 @@ eventoBoton = function (e) {
     let carrito = { items: arrCarrito, };
     localStorage.setItem("carrito", JSON.stringify(carrito));
     Swal.fire({
-        titleText: 'item agregado al carro',
-        icon: 'success',
-        background: '#F1F5F2',
+        text: 'item agregado al carro!',
+        width: 350,
+        padding: '1em',
+        color: '#14AE30',
+        imageUrl:"/media/mono2.gif",
+        imageAlt: 'mono con un arma',
+        
     })
 };
 
