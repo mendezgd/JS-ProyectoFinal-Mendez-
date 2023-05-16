@@ -87,7 +87,7 @@ eventoBoton = function (e) {
         width: 350,
         padding: '1em',
         color: '#14AE30',
-        imageUrl: "./media/mono2.gif",
+        imageUrl: "../media/mono2.gif",
         imageAlt: 'mono con un arma',
         background: '#fac85b',
 
