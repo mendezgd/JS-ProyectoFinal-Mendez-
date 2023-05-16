@@ -1,5 +1,5 @@
 //declaraciones//
-const arrProdFijo = [
+/* const producto = [
     { id: 1, nombre: "Ak47", stock: 10, precio: 2500, img: "prod1.jpg", descripcion: "El AK-47 es un fusil de asalto soviético diseñado por Mijaíl Kaláshnikov en 1947" },
     { id: 2, nombre: "M4A1", stock: 5, precio: 3100, img: "asalto1.jpg", descripcion: "La M4A1 es una carabina de asalto estadounidense que utiliza munición 5,56." },
     { id: 3, nombre: "Desert Eagle", stock: 22, precio: 700, img: "prod3.jpg", descripcion: "La Desert Eagle es una pistola semiautomática capacidad para disparar cartucho .50 Action Express." },
@@ -9,7 +9,16 @@ const arrProdFijo = [
     { id: 7, nombre: "Optica", stock: 300, precio: 150, img: "opticas1.jpg", descripcion: "Los visores son dispositivos ópticos que se acoplan al arma para mejorar la precisión del disparo." },
     { id: 8, nombre: "Granada", stock: 22, precio: 400, img: "granadas1.jpg", descripcion: "Estas armas están diseñadas para ser arrojadas desde distancias cortas y causar daño en un radio considerable." },
 ];
-
+ */
+let productos= [];
+fetch("./javascript/productos.json")
+    .then (response => response.json())
+    .then (items => {
+        productos = items;
+        console.log(productos);
+        crearCard(productos);
+    });
+    
 let arrProdFiltrado = [];
 let arrCarrito = [];
 const iva = 1.21
@@ -36,6 +45,7 @@ const productosDin = document.getElementById('productosDin');
 const inputBuscar = document.querySelector('input[type="search"]');
 const botonesAgregar = document.getElementsByClassName('agregar');
 const listaCarrito = document.getElementById('listaCarrito');
+const finalizarCompra = document.getElementsByClassName('finalizar');
 
 // funcion crea cards //
 function crearCard(el) {
@@ -47,7 +57,7 @@ function crearCard(el) {
                         <h5 class="card-title">${el.nombre}</h5>
                         <p class="card-text">${el.descripcion}</p>
                         <button value="${el.id}" class="btn btn-primary btn-sm agregar" data-bs-toggle="button">Agregar al carro</button>
-                        <p>Precio: $${el.precio}</p>
+                        <p>Precio:(en dolares) $${el.precio}</p>
                     </div>
                 </div>
             </div>`;
@@ -56,7 +66,7 @@ function crearCard(el) {
 
 // buscador //
 showInput = addEventListener('input', () => {
-    let items = buscarNombre(arrProdFijo, inputBuscar.value);
+    let items = buscarNombre(productos, inputBuscar.value);
     productosDin.innerHTML = "";
     for (const item of items) {
 
@@ -68,7 +78,7 @@ showInput = addEventListener('input', () => {
 // muestra items en listado //
 function iniciarItems() {
     productosDin.innerHTML = "";
-    for (const item of arrProdFijo) {
+    for (const item of productos) {
 
         productosDin.innerHTML += crearCard(item);
     }
@@ -78,7 +88,7 @@ function iniciarItems() {
 // evento del boton agregar // 
 
 eventoBoton = function (e) {
-    let found = buscarId(arrProdFijo, e.target.value);
+    let found = buscarId(productos, e.target.value);
     arrCarrito.push(found);
     let carrito = { items: arrCarrito, };
     localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -89,7 +99,7 @@ eventoBoton = function (e) {
         color: '#14AE30',
         imageUrl:"/media/mono2.gif",
         imageAlt: 'mono con un arma',
-        background: '#FCFDAF',
+        background: '#fac85b',
         
     })
 };
