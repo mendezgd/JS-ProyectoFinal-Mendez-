@@ -1,6 +1,6 @@
 //declaraciones//
 
-// Ahora traemos los productos desde el json //
+// Ahora traemos los productos desde el json con fetch //
 let productos = [];
 fetch("./javascript/productos.json")
     .then(response => response.json())
@@ -84,13 +84,16 @@ eventoBoton = function (e) {
     console.log(carrito);
     Swal.fire({
         text: 'item agregado al carro!',
-        width: 350,
+        width: 300,
         padding: '1em',
         color: '#14AE30',
-        imageUrl: "../media/mono2.gif",
-        imageAlt: 'mono con un arma',
         background: '#fac85b',
-
+        backdrop: `
+            rgba(10,10,123,0.4)
+            url("/media/mono2.gif")
+            center top
+            no-repeat
+        `
     })
 };
 

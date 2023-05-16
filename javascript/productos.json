@@ -53,7 +53,7 @@
         "stock": 300,
         "precio": 150,
         "img": "opticas1.jpg",
-        "descripcion:": "Los visores son dispositivos ópticos que se acoplan al arma para mejorar la precisión del disparo."
+        "descripcion": "Los visores son dispositivos ópticos que se acoplan al arma para mejorar la precisión del disparo."
     },
     {
         "id": 8,
