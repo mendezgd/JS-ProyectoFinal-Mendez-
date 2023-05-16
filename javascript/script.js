@@ -10,14 +10,14 @@
     { id: 8, nombre: "Granada", stock: 22, precio: 400, img: "granadas1.jpg", descripcion: "Estas armas están diseñadas para ser arrojadas desde distancias cortas y causar daño en un radio considerable." },
 ]; */
 
-let productos= [];
+let productos = [];
 fetch("./javascript/productos.json")
-    .then (response => response.json())
-    .then (items => {
+    .then(response => response.json())
+    .then(items => {
         productos = items;
         iniciarItems();
     });
-    
+
 let arrProdFiltrado = [];
 let arrCarrito = [];
 let total = 0
@@ -46,16 +46,16 @@ const listaCarrito = document.getElementById('listaCarrito');
 const finalizarCompra = document.getElementsByClassName('finalizar');
 
 // funcion crea cards //
-function crearCard(productos) {
+function crearCard(el) {
     let htmlCard = `
                 <div class="col">
                 <div class="card" style="width: 18rem;">
-                    <img src="./media/${productos.img}" alt="${productos.nombre}" class="card-img-top" width="288px" height="250px">
+                    <img src="./media/${el.img}" alt="${el.nombre}" class="card-img-top" width="288px" height="250px">
                     <div class="card-body">
-                        <h5 class="card-title">${productos.nombre}</h5>
-                        <p class="card-text">${productos.descripcion}</p>
-                        <button value="${productos.id}" class="btn btn-primary btn-sm agregar" data-bs-toggle="button">Agregar al carro</button>
-                        <p>Precio:(en dolares) $${productos.precio}</p>
+                        <h5 class="card-title">${el.nombre}</h5>
+                        <p class="card-text">${el.descripcion}</p>
+                        <button value="${el.id}" class="btn btn-primary btn-sm agregar" data-bs-toggle="button">Agregar al carro</button>
+                        <p>Precio:(en dolares) $${el.precio}</p>
                     </div>
                 </div>
             </div>`;
@@ -90,15 +90,16 @@ eventoBoton = function (e) {
     arrCarrito.push(found);
     let carrito = { items: arrCarrito, };
     localStorage.setItem("carrito", JSON.stringify(carrito));
+    console.log(carrito);
     Swal.fire({
         text: 'item agregado al carro!',
         width: 350,
         padding: '1em',
         color: '#14AE30',
-        imageUrl:"/media/mono2.gif",
+        imageUrl: "/media/mono2.gif",
         imageAlt: 'mono con un arma',
         background: '#fac85b',
-        
+
     })
 };
 
