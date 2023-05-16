@@ -1,5 +1,5 @@
 //declaraciones//
-/* const producto = [
+/* const productos = [
     { id: 1, nombre: "Ak47", stock: 10, precio: 2500, img: "prod1.jpg", descripcion: "El AK-47 es un fusil de asalto soviético diseñado por Mijaíl Kaláshnikov en 1947" },
     { id: 2, nombre: "M4A1", stock: 5, precio: 3100, img: "asalto1.jpg", descripcion: "La M4A1 es una carabina de asalto estadounidense que utiliza munición 5,56." },
     { id: 3, nombre: "Desert Eagle", stock: 22, precio: 700, img: "prod3.jpg", descripcion: "La Desert Eagle es una pistola semiautomática capacidad para disparar cartucho .50 Action Express." },
@@ -8,20 +8,18 @@
     { id: 6, nombre: "Escopeta", stock: 40, precio: 1200, img: "escopetas1.jpg", descripcion: "Las escopetas están diseñadas para descargar varios proyectiles, como perdigones o postas, en cada disparo." },
     { id: 7, nombre: "Optica", stock: 300, precio: 150, img: "opticas1.jpg", descripcion: "Los visores son dispositivos ópticos que se acoplan al arma para mejorar la precisión del disparo." },
     { id: 8, nombre: "Granada", stock: 22, precio: 400, img: "granadas1.jpg", descripcion: "Estas armas están diseñadas para ser arrojadas desde distancias cortas y causar daño en un radio considerable." },
-];
- */
+]; */
+
 let productos= [];
 fetch("./javascript/productos.json")
     .then (response => response.json())
     .then (items => {
         productos = items;
-        console.log(productos);
-        crearCard(productos);
+        iniciarItems();
     });
     
 let arrProdFiltrado = [];
 let arrCarrito = [];
-const iva = 1.21
 let total = 0
 let local = localStorage.getItem("carrito");
 let carrito = JSON.parse(local);
@@ -48,16 +46,16 @@ const listaCarrito = document.getElementById('listaCarrito');
 const finalizarCompra = document.getElementsByClassName('finalizar');
 
 // funcion crea cards //
-function crearCard(el) {
+function crearCard(productos) {
     let htmlCard = `
                 <div class="col">
                 <div class="card" style="width: 18rem;">
-                    <img src="./media/${el.img}" alt="${el.nombre}" class="card-img-top" width="288px" height="250px">
+                    <img src="./media/${productos.img}" alt="${productos.nombre}" class="card-img-top" width="288px" height="250px">
                     <div class="card-body">
-                        <h5 class="card-title">${el.nombre}</h5>
-                        <p class="card-text">${el.descripcion}</p>
-                        <button value="${el.id}" class="btn btn-primary btn-sm agregar" data-bs-toggle="button">Agregar al carro</button>
-                        <p>Precio:(en dolares) $${el.precio}</p>
+                        <h5 class="card-title">${productos.nombre}</h5>
+                        <p class="card-text">${productos.descripcion}</p>
+                        <button value="${productos.id}" class="btn btn-primary btn-sm agregar" data-bs-toggle="button">Agregar al carro</button>
+                        <p>Precio:(en dolares) $${productos.precio}</p>
                     </div>
                 </div>
             </div>`;
@@ -122,4 +120,4 @@ const buscarId = (arr, filtro) => {
     return buscar
 }
 
-iniciarItems();
+/* iniciarItems(); */
