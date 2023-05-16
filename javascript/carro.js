@@ -37,10 +37,9 @@ eventoBoton = function (e) {
     let carrito = { items: arrCarrito };
     localStorage.setItem("carrito", JSON.stringify(carrito));
     Swal.fire({
-        text: 'item eliminado!',
+        title: 'item eliminado!',
         icon: 'error',
         width: 350,
-        background: '#FCFDAF',
     })
     refrescarItems();
 };
@@ -50,7 +49,7 @@ eventoFinalizar = function () {
     let botonFinalizar = document.getElementsByClassName('finalizar');
     botonFinalizar.addEventListener('click');
     Swal.fire({
-        Title: 'Compra Finalizada',
+        title: 'Compra Finalizada',
         text: 'recibirá sus productos en 3 días',
         icon: 'success',
         width: 350,

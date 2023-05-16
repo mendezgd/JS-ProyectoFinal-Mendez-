@@ -83,17 +83,12 @@ eventoBoton = function (e) {
     localStorage.setItem("carrito", JSON.stringify(carrito));
     console.log(carrito);
     Swal.fire({
-        text: 'item agregado al carro!',
-        width: 300,
-        padding: '1em',
-        color: '#14AE30',
-        background: '#fac85b',
-        backdrop: `
-            rgba(10,10,123,0.4)
-            url("/media/mono2.gif")
-            center top
-            no-repeat
-        `
+        position: 'center-top',
+        icon: 'success',
+        title: 'Item agregado al carro',
+        showConfirmButton: false,
+        width: 350,
+        timer: 1500
     })
 };
 
