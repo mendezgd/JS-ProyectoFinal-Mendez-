@@ -47,10 +47,6 @@ eventoBoton = function (e) {
     refrescarItems();
 };
 
-// evento finalizar compra //
-const finalizarBoton = document.querySelector('#finalizar');
-finalizarBoton.addEventListener('click', sweetfinalizar);
-
 // elimino de la lista por ID //
 const removerId = (arr, filtro) => {
     const quitar = arr.filter((el) => {
@@ -95,10 +91,22 @@ function sweetfinalizar() {
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire('Compra finalizada, sus productos llegarán en 3 días!', '', 'success')
+            finalizarCarro();
+            refrescarItems();
         } else if (result.isDenied) {
             Swal.fire('puede seguir modificando', '', 'info')
         }
     })
 }
+
+// finaliza la compra evento y funcion //
+const finalizarBoton = document.querySelector('#finalizar')
+finalizarBoton.addEventListener('click', sweetfinalizar);
+
+function finalizarCarro() {
+    arrCarrito.length = 0;
+    localStorage.setItem("carrito", JSON.stringify(arrCarrito));
+}
+
 
 refrescarItems();
