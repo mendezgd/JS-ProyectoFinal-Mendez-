@@ -45,7 +45,7 @@ function crearCard(el) {
                         <h5 class="card-title">${el.nombre}</h5>
                         <p class="card-text">${el.descripcion}</p>
                         <button value="${el.id}" class="btn btn-primary btn-sm agregar" data-bs-toggle="button">Agregar al carro</button>
-                        <p>Precio:(en dolares) $${el.precio}</p>
+                        <p>Precio:(en USD) $${el.precio}</p>
                     </div>
                 </div>
             </div>`;
@@ -108,5 +108,3 @@ const buscarId = (arr, filtro) => {
     })
     return buscar
 }
-
-iniciarItems();

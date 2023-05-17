@@ -24,7 +24,9 @@ function itemHtml(el) {
                     </div>
                     <div class="col-md-1">
                         <p class="card-text text-center pt-4">$${el.precio}</p>
+                        <div class= "text-center">
                         <button value="${el.id}" class="btn btn-danger btn-sm borrar">Borrar</button>
+                        </div>
                     </div>
                 </div>
             </div>`;
@@ -85,7 +87,6 @@ function agregarListener() {
 
 // finaliza la compra // 
 function sweetfinalizar() {
-    refrescarItems();
     Swal.fire({
         title: 'Desea finalizar su compra?',
         showDenyButton: true,
