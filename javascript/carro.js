@@ -15,15 +15,15 @@ function itemHtml(el) {
                     <div class="col-md-1">
                         <img src="../media/${el.img}" class="img-fluid rounded-start" alt="${el.nombre}" >
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-9">
                         <div class="card-body">
                             <h5 class="card-title">${el.nombre}</h5>
                             <p class="card-text">${el.descripcion}</p>
                             
                         </div>
                     </div>
-                    <div class="col-md-1">
-                        <p class="card-text text-center pt-4">$${el.precio}</p>
+                    <div class="col-md-2">
+                        <p class="card-text text-center m-0 p-0 mb-2">Cantidad: ${el.cant}<br>$${el.precio}</p>
                         <div class= "text-center">
                         <button value="${el.id}" class="btn btn-danger btn-sm borrar">Borrar</button>
                         </div>
@@ -61,7 +61,7 @@ function refrescarItems() {
     let total = 0;
     let campoTotal = document.getElementById('total');
     arrCarrito.forEach(x => {
-        total += x.precio
+        total += x.precio * x.cant
     });
     campoTotal.innerHTML = total
     carroItems.innerHTML = "";

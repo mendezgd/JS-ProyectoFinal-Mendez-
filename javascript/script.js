@@ -9,7 +9,6 @@ fetch("./javascript/productos.json")
         iniciarItems();
     });
 
-let arrProdFiltrado = [];
 let arrCarrito = [];
 let total = 0
 let local = localStorage.getItem("carrito");
@@ -76,8 +75,13 @@ function iniciarItems() {
 // evento del boton agregar // 
 
 eventoBoton = function (e) {
-    let found = buscarId(productos, e.target.value);
-    arrCarrito.push(found);
+    let agregarCant = buscarId(arrCarrito, e.target.value);
+    if (agregarCant != undefined) {
+        agregarCant.cant += 1;
+    } else {
+        let found = buscarId(productos, e.target.value);
+        arrCarrito.push(found);
+    }
     let carrito = { items: arrCarrito, };
     localStorage.setItem("carrito", JSON.stringify(carrito));
     Swal.fire({
