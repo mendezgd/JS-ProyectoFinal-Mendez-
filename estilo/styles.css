@@ -38,7 +38,7 @@ footer {
     text-align: center;
     position: absolute;
     width: 100%;
-    background-color: #dad7cd;
+    background-color: #FBFEF9;
 }
 
 #productosDin {
@@ -51,4 +51,5 @@ footer {
 
 .col-md-1 img{
     width: 100%;
+    
 }

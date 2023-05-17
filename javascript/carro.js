@@ -38,32 +38,23 @@ eventoBoton = function (e) {
     localStorage.setItem("carrito", JSON.stringify(carrito));
     Swal.fire({
         title: 'item eliminado!',
+        background: '#FBFEF9',
         icon: 'error',
         width: 350,
     })
     refrescarItems();
 };
 
-// evento del boton finalizar compra //
-eventoFinalizar = function () {
-    let botonFinalizar = document.getElementsByClassName('finalizar');
-    botonFinalizar.addEventListener('click');
-    Swal.fire({
-        title: 'Compra Finalizada',
-        text: 'recibirá sus productos en 3 días',
-        icon: 'success',
-        width: 350,
-        background: '#FCFDAF',
-    })
-    refrescarItems();
-};
+// evento finalizar compra //
+const finalizarBoton = document.querySelector('#finalizar');
+finalizarBoton.addEventListener('click', sweetfinalizar);
 
 // elimino de la lista por ID //
 const removerId = (arr, filtro) => {
-    const buscar = arr.filter((el) => {
+    const quitar = arr.filter((el) => {
         return el.id != filtro
     })
-    return buscar
+    return quitar
 }
 
 // refresca lista de items en carrito y recalcula el total //
@@ -84,7 +75,7 @@ function refrescarItems() {
     agregarListener();
 }
 
-// agrega listeners a todos los botones //
+// agrega listeners a todos los botones borrar //
 function agregarListener() {
     let botonesBorrar = document.getElementsByClassName('borrar');
     for (const boton of botonesBorrar) {
@@ -92,6 +83,21 @@ function agregarListener() {
     }
 }
 
-
+// finaliza la compra // 
+function sweetfinalizar() {
+    refrescarItems();
+    Swal.fire({
+        title: 'Desea finalizar su compra?',
+        showDenyButton: true,
+        confirmButtonText: 'Si',
+        denyButtonText: `No`,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire('Compra finalizada, sus productos llegarán en 3 días!', '', 'success')
+        } else if (result.isDenied) {
+            Swal.fire('puede seguir modificando', '', 'info')
+        }
+    })
+}
 
 refrescarItems();

@@ -34,7 +34,6 @@ const productosDin = document.getElementById('productosDin');
 const inputBuscar = document.querySelector('input[type="search"]');
 const botonesAgregar = document.getElementsByClassName('agregar');
 const listaCarrito = document.getElementById('listaCarrito');
-const finalizarCompra = document.getElementsByClassName('finalizar');
 
 // funcion crea cards //
 function crearCard(el) {
@@ -81,11 +80,11 @@ eventoBoton = function (e) {
     arrCarrito.push(found);
     let carrito = { items: arrCarrito, };
     localStorage.setItem("carrito", JSON.stringify(carrito));
-    console.log(carrito);
     Swal.fire({
-        position: 'center-top',
+        position: 'center',
         icon: 'success',
         title: 'Item agregado al carro',
+        background: '#FBFEF9',
         showConfirmButton: false,
         width: 350,
         timer: 1500
@@ -110,4 +109,4 @@ const buscarId = (arr, filtro) => {
     return buscar
 }
 
-/* iniciarItems(); */
+iniciarItems();
